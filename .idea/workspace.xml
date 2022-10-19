@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="62b4001f-8f7c-4faf-9628-71f7ddfc8503" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_google_protobuf_protobuf_java_3_19_4_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__com_typesafe_scala_logging_scala_logging_2_13_3_9_5_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__mysql_mysql_connector_java_8_0_30_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_modules_scala_xml_2_13_2_1_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_library_2_13_10_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_reflect_2_13_10_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_sbt_util_control_2_13_1_7_2_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalactic_scalactic_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_compatible_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_core_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_diagrams_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_featurespec_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_flatspec_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_freespec_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_funspec_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_funsuite_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_matchers_core_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_mustmatchers_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_propspec_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_refspec_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_shouldmatchers_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_scalatest_scalatest_wordspec_2_13_3_2_14_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/sbt__org_slf4j_slf4j_api_1_7_36_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/FirstSBTProject-build.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/FirstSBTProject.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sbt.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.sbt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/project/build.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/abstractclass/AbstractClassDetail.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/abstractclass/AbstractClassMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/accessmodifiers/AccessTest.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/AbstractDonut.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/Activity1.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/Activity2.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/Activity3.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/Activity4.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/Activity5.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/Activity6.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/Activity7.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/Activity8.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/Constructors.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/PalindromeActivity.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/RemoveDuplicatesFromSortedArray.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/StopWhenNotEven.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/activities/ValidAnagram.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/arrays/PracticeArray.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/arrays/PracticeArray2.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/bank/Account.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/bank/Bank.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/bank/CreditAccount.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/bank/Customer.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/bank/SavingsAccount.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/bankproject/Account.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/bankproject/Bank.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/bankproject/BankMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/bankproject/Customer.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/breaktesting/TestBreak.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/breaktesting/logtest/HelloWorldWithLog.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/caseclass/MainCaseClass.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/collections/IterateOverMaps.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/collections/ListSet.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/collections/MapTest.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/collections/PriorityQueueTest.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/collections/QueuePractice.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/collections/SetExample.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/collections/SortedSetExample.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/collections/TestMap.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/collections/collectionbitset/AddRemoveBitSet.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/collections/collectionhashset/MainHashSetExample.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/collections/collectionsequence/Sequence.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/collections/collectionvector/VectorPlay.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/constructor/DefaultConstructor.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/constructor/PrimaryConstructor.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/constructor/SecondaryConstructor.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/datepractice/DatePractice.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/enumeration/DonutEnumeration.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/enumeration/MilkyWay.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/exceptions/ExceptionExample.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/exceptions/ExceptionExample2.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/exceptions/ExceptionExamples.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/exceptions/ThrowException.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/exceptionthrows/ExceptionExampleTest.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/exceptionthrows/ExceptionExamples.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/finaltest/FinalMain.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/functions/Addition.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/functions/DefaultValFunction.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/functions/FunctionCall.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/functions/HigherOrderFunction.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/higherorderfunctions/AnonymousFunction.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/higherorderfunctions/Composition.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/higherorderfunctions/NestedFunctions.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/higherorderfunctions/ScalaCurryingFunction.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/higherorderfunctions/VariableLengthParameters.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/inheritance/BasicsInheritance.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/inheritance/MultiLevelInheritance.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/jdbcconnectwithDB/MySQLConnectivityWithScala.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/lazyevaluation/LazyEvaluation.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/lazyevaluation/LazyHigherOrder.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/multidimensional/AdditionMultiDim.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/multidimensional/MultiArrayExample.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/objectoriented/Arithmetic.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/objectoriented/Boxing.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/objectoriented/CompanionObject.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/objectoriented/Student.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/objectoriented/Student2.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/objectoriented/StudentRecord.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/objectoriented/StudentRecordOther.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/operators/Operators.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/other/BasicsList.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/other/EvenOdd.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/other/Interactive.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/other/MixTypes.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/other/Palindrome.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/other/PrintStatements.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/other/Temp.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/other/Tuple.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/other/WhatLearnt.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/pattern/Singleton.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/patternmatching/MatchNumbers.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/polymorphism/BankPolymorphismExample.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/polymorphism/FieldOverride.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/polymorphism/MethodOverriding.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/polymorphism/mathsComputation.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/readingfromfile/ReadFileContents.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/recursion/SquareNumber.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/regex/NumberInDigits.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/streamscala/StreamTest.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/streamscala/StreamTest2.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/strings/StringComparison.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/strings/StringExample.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/strings/stringinterpolation/StringInter.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/testcases/CubeCalculator.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/testcases/ScalaCollection.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/testcases/threads/CreateThread.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/testcases/threads/PriorityThreads.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/testcases/threads/TestThreadUtility.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/testpackageobject/practicepackage.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/traitpractice/MixTraits.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/traitpractice/TraitPractice.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/tuple/Tuples.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/scala/variables/MultipleAssignment.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/scala/com/wiley/testing/ActivityTest.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/scala/com/wiley/testing/CubeCalculatorTest.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/scala/com/wiley/testing/ExampleSuite.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/scala/com/wiley/testing/FeatureSpecTest.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/scala/com/wiley/testing/FreeSpecTest.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/scala/com/wiley/testing/TestQueueFunc.scala" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/scala/com/wiley/testing/WordSpecTest.scala" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="SBT">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FirstSBTProject" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FirstSBTProject" type="f1a62948:ProjectNode" />
+                <item name="FirstSBTProject" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="FirstSBTProject" type="f1a62948:ProjectNode" />
+                <item name="FirstSBTProject" type="2d1252cf:ModuleNode" />
+                <item name="sbt tasks" type="d9357504:SbtViewContributor$SbtTasksGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Package Object" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2FywJPfj1YObUpIre0Lu4kQPuw5" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/Aycan/IdeaProjects/FirstSBTProject/src/main/scala&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Aycan/IdeaProjects/ScalaCoding&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;sbt.project.settings.configurable&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Aycan\IdeaProjects\FirstSBTProject\src\main\src" />
+      <recent name="C:\Users\Aycan\IdeaProjects\FirstSBTProject\src\main\scala" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Aycan\IdeaProjects\FirstSBTProject\src\main\scala" />
+      <recent name="C:\Users\Aycan\IdeaProjects\FirstSBTProject\src" />
+      <recent name="C:\Users\Aycan\IdeaProjects\FirstSBTProject" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.bank.BankMain">
+    <configuration name="BankMain" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="bankproject.BankMain" />
+      <module name="FirstSBTProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bankproject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainObject" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="threads.MainObject" />
+      <module name="FirstSBTProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="threads.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PriorityThreads" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="threads.PriorityThreads" />
+      <module name="FirstSBTProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="threads.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestThreadUtility" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="threads.TestThreadUtility" />
+      <module name="FirstSBTProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="threads.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="bank.BankMain" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="bank.BankMain" />
+      <module name="FirstSBTProject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bank.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.bank.BankMain" />
+        <item itemvalue="Application.BankMain" />
+        <item itemvalue="Application.TestThreadUtility" />
+        <item itemvalue="Application.PriorityThreads" />
+        <item itemvalue="Application.MainObject" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="62b4001f-8f7c-4faf-9628-71f7ddfc8503" name="Changes" comment="" />
+      <created>1665477563909</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1665477563909</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

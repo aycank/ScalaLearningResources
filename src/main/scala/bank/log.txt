@@ -1,1 +1,1 @@
-2022-10-20T15:02:09.781+01:00 Customer ID 0 (admin) Logged In
+2022-10-21T00:40:08.721+01:00 Customer ID: 0 (admin) Logged out

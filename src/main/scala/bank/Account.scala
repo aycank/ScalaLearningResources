@@ -1,5 +1,7 @@
 package bank
 
+import org.joda.time.DateTime
+
 import scala.io.StdIn.{readDouble, readInt}
 import scala.util.Random
 
@@ -10,7 +12,7 @@ abstract class Account{
   private var balance : Double = 0
   private val sortCode : Int = Random.between(100000, 999999)
 
-  def start() : Unit = {
+  def start(customer: Customer) : Unit = {
     var choice : Int = 0
     while(choice != 10){
       println("1. Deposit to Account\n" +
@@ -20,9 +22,9 @@ abstract class Account{
         "10. Exit")
       choice = readInt()
       choice match{
-        case 1 => depositCash()
-        case 2 => withdrawCash()
-        case 3 => getBalance()
+        case 1 => depositCash(customer)
+        case 2 => withdrawCash(customer)
+        case 3 => println(getBalance())
         case 4 => getDetails()
         case 10 => println("Exiting...")
         case _ => println("Invalid Option")
@@ -44,14 +46,14 @@ abstract class Account{
 
   def getID: Int = id
 
-  def getBalance() : Unit = println("Balance: " + balance)
+  def getBalance() : Double = balance
 
-  def depositCash() : Unit = {
+  def depositCash(customer: Customer) : Unit = {
     println("Enter how much to deposit: ")
     val deposit = readDouble()
     if(deposit <= 0) {
-        println("Invalid Amount")
-      } else {
+      println("Invalid Amount")
+    }else {
       println(Thread.currentThread().getName + " Is Going To Deposit £" + deposit + ". Please Wait...")
       try{
         Thread.sleep(3000)
@@ -60,13 +62,18 @@ abstract class Account{
       }
       balance += deposit
       println(deposit + " Deposited by " + Thread.currentThread().getName + ".\nThe New Balance is: " + balance)
+      if(deposit <= 5000){
+        logDeposit(customer)
+      } else {
+        flagLogDeposit(customer)
+      }
     }
   }
 
-  def withdrawCash() : Unit = {
+  def withdrawCash(customer: Customer) : Unit = {
     println("Enter How Much To Withdraw: ")
     val withdraw = readDouble()
-    if((withdraw <= 0) && (balance - withdraw > 0)){
+    if((withdraw <= 0) && (balance - withdraw < 0)){
       println("Invalid Amount")
     } else {
       println(Thread.currentThread().getName + " Is Going To Withdraw £" + withdraw + ". Please Wait...")
@@ -78,10 +85,43 @@ abstract class Account{
       balance -= withdraw
       println(withdraw + " Withdrawn.\nThe Remaining Balance is: " + balance + "" +
         "\nThe amount was taken by " + Thread.currentThread().getName)
+      if(withdraw <= 5000){
+        logWithdrawal(customer)
+      } else {
+        flagLogWithdraw(customer)
+      }
     }
   }
 
   def transferCash() : Unit = {
 
+  }
+
+  def logDeposit(customer: Customer) : Unit = {
+    val date = new DateTime()
+    reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
+      .appendAll("" + date + " Customer ID: " + customer.id + " (" + customer.getName() + ") Deposited " +
+        "into Account: " + accType + "\n")
+  }
+
+  def logWithdrawal(customer: Customer) : Unit = {
+    val date = new DateTime()
+    reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
+      .appendAll("" + date + " Customer ID: " + customer.id + " (" + customer.getName() + ") Withdrew cash " +
+        "from Account: " + accType + "\n")
+  }
+
+  def flagLogDeposit(customer: Customer) : Unit = {
+    val date = new DateTime()
+    reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
+      .appendAll("" + date + " FLAGGED Customer ID: " + customer.id + " (" + customer.getName() + ") Deposited more " +
+        " than 5000 from Account: " + accType + "\n")
+  }
+
+  def flagLogWithdraw(customer: Customer) : Unit = {
+    val date = new DateTime()
+    reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
+      .appendAll("" + date + " FLAGGED Customer ID: " + customer.id + " (" + customer.getName() + ") Withdrew more " +
+        " than 5000 from Account: " + accType + "\n")
   }
 }

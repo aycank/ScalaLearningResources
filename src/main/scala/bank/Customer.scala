@@ -1,5 +1,7 @@
 package bank
 
+import org.joda.time.DateTime
+
 import scala.collection.mutable.ListBuffer
 import scala.io.StdIn.{readInt, readLine}
 import scala.util.Random
@@ -12,7 +14,7 @@ class Customer(number : Int, name : String, postcode : String) {
   var pin: Int = Random.between(1000, 9999)
   var accounts = new ListBuffer[Account]
 
-  def start() : Unit = {
+  def start(customer: Customer) : Unit = {
     println("Hello " + fullName)
     var choice : Int = 0
     while(choice != 10){
@@ -28,12 +30,20 @@ class Customer(number : Int, name : String, postcode : String) {
       choice match {
         case 1 => getDetails()
         case 2 => updateDetails()
-        case 3 => addAccount()
-        case 4 => enterAccount()
-        case 5 => deleteAccount()
+        case 3 => addAccount(customer)
+        case 4 => enterAccount(customer)
+        case 5 => deleteAccount(customer)
         case 6 => getAccounts()
         case 7 => support()
-        case 10 => println("Logging out...")
+        case 10 =>
+          logLogOut(customer)
+          print("Logging out.")
+          Thread.sleep(500)
+          print(".")
+          Thread.sleep(500)
+          println(".")
+          Thread.sleep(750)
+        case _ => println("Invalid Option")
       }
     }
   }
@@ -66,36 +76,40 @@ class Customer(number : Int, name : String, postcode : String) {
       }
     }
   }
-  def addAccount() : Unit = {
+  def addAccount(customer: Customer) : Unit = {
     var choice : Int = 0
     while(choice != 10){
       println("What Would You Like To Add:\n" +
-        "1. Credit\n" +
+        "1. Checking\n" +
         "2. Savings\n" +
         "10. Back")
       choice = scala.io.StdIn.readInt()
       choice match {
-        case 1 => addCredit()
-        case 2 => addSavings()
+        case 1 => addChecking(customer)
+        case 2 => addSavings(customer)
         case 10 => choice = 10
         case _ => println("Invalid Option")
       }
     }
   }
 
-  def addCredit() : Unit = {
+  def addChecking(customer: Customer) : Unit = {
     val id = accounts.size + 1
-    val creditAccount = new CreditAccount(id)
-    accounts += creditAccount
+    val checkingAccount = new CheckingAccount(id)
+    accounts += checkingAccount
+    logCreditCreation(customer)
+    println("Credit Account Successfully Added")
   }
 
-  def addSavings() : Unit = {
+  def addSavings(customer: Customer) : Unit = {
     val id = accounts.size + 1
     val savingsAccount = new SavingsAccount(id)
     accounts += savingsAccount
+    logSavingsCreation(customer)
+    println("Savings Account Successfully Added")
   }
 
-  def enterAccount() : Unit = {
+  def enterAccount(customer: Customer) : Unit = {
     var enterAcc: Boolean = false
     if (accounts.isEmpty) {
       println("No Accounts Created")
@@ -109,7 +123,7 @@ class Customer(number : Int, name : String, postcode : String) {
       for (account <- accounts) {
         if (account.id == choice) {
           enterAcc = true
-          account.start()
+          account.start(customer)
         }
       }
       if (!enterAcc) {
@@ -118,8 +132,54 @@ class Customer(number : Int, name : String, postcode : String) {
     }
   }
 
-  def deleteAccount() : Unit = {
-
+  def deleteAccount(customer: Customer) : Unit = {
+    var checked: Boolean = false
+    var willDel : Boolean = false
+    var accountType : String = ""
+    var index : Int = 0
+    if (accounts.isEmpty) {
+      println("No Accounts")
+    } else {
+      println("Which Account Would You Like To Delete: ")
+      for (account <- accounts) {
+        print(account.getID + ". ")
+        account.getSimpleDetails()
+      }
+      val choice = readInt()
+      for (account <- accounts) {
+        if (account.id == choice) {
+          if(account.getBalance() > 0){
+            checked = true
+            println("Please Withdraw all cash before deleting the account")
+          }else{
+            println(account.accType)
+            if (account.accType == "Checking"){
+              checked = true
+              willDel = true
+              accountType = "Checking"
+              index = accounts.indexOf(account)
+            }else if (account.accType == "Savings"){
+              checked = true
+              willDel = true
+              accountType = "Savings"
+              index = accounts.indexOf(account)
+            }
+          }
+        }
+      }
+      if(willDel){
+        if(accountType == "Checking"){
+          accounts -= accounts(index)
+          logCreditDeletion(customer)
+        }else if (accountType == "Savings"){
+          accounts -= accounts(index)
+          logSavingsDeletion(customer)
+        }
+      }
+      if (!checked) {
+        println("Invalid Option")
+      }
+    }
   }
 
   def getAccounts() : Unit = {
@@ -127,7 +187,16 @@ class Customer(number : Int, name : String, postcode : String) {
   }
 
   def support() : Unit = {
-
+    print("Connecting you with an agent")
+    Thread.sleep(4000)
+    print(".")
+    Thread.sleep(4000)
+    print(".")
+    Thread.sleep(4000)
+    println(".")
+    Thread.sleep(4000)
+    println("Sorry, all our agents are busy at the moment. If you email bank@thebank.co.uk, we will get back " +
+      "to you as soon as possible.")
   }
 
   def getName() : String = fullName
@@ -144,6 +213,42 @@ class Customer(number : Int, name : String, postcode : String) {
     println("Enter new Postcode:")
     val newPostcode = readLine().toUpperCase()
     pCode = newPostcode
+  }
+
+  // Function to log when a credit account is created
+  def logCreditCreation(customer: Customer): Unit = {
+    val date = new DateTime()
+    reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
+      .appendAll("" + date + " New Account Added for Customer ID: " + customer.id + " (" + customer.getName() + ")" +
+        " Type: Credit\n")
+  }
+
+  def logCreditDeletion(customer: Customer): Unit = {
+    val date = new DateTime()
+    reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
+      .appendAll("" + date + " Customer ID: " + customer.id + " (" + customer.getName() + "). Deleted Account Type: " +
+        "Credit\n")
+  }
+
+  // Function to log when a savings account is created
+  def logSavingsCreation(customer: Customer): Unit = {
+    val date = new DateTime()
+    reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
+      .appendAll("" + date + " New Account Added for Customer ID: " + customer.id + " (" + customer.getName() + ") " +
+        "Type: Savings\n")
+  }
+
+  def logSavingsDeletion(customer: Customer): Unit = {
+    val date = new DateTime()
+    reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
+      .appendAll("" + date + " Customer ID: " + customer.id + " (" + customer.getName() + ") Deleted Account Type: " +
+        "Savings\n")
+  }
+
+  def logLogOut(customer: Customer) : Unit = {
+    val date = new DateTime()
+    reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
+      .appendAll("" + date + " Customer ID: " + customer.id + " (" + customer.getName() + ") Logged out\n")
   }
 
   def this(id : Int, name : String, pcode : String, uid : Int, pin : Int){

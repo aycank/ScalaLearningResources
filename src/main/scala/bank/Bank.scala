@@ -1,7 +1,7 @@
 package bank
 
 import scala.collection.mutable.ListBuffer
-import scala.io.StdIn.{readInt, readLine}
+import scala.io.StdIn.{readDouble, readInt, readLine}
 import org.joda.time.DateTime
 
 import java.io.PrintWriter
@@ -26,6 +26,7 @@ class Bank {
     // Add customer to ListBuffer
     customers += customer
     println("Account Created Successfully")
+    logCustomerCreation(customer)
     customer.getDetails()
     println("\nREMEMBER YOUR ID AND PIN AS YOU\nWILL NEED IT FOR LOGGING IN")
     println("-------------------------------")
@@ -33,6 +34,7 @@ class Bank {
 
   // Function to login
   def login(): Unit = {
+    var loggedIn: Boolean = false
     println("Enter your ID: ")
     val id = readInt()
     println("Enter your PIN: ")
@@ -41,17 +43,31 @@ class Bank {
       // If admin, redirect to admin startpage
       if ((id == 123) && (pin == 123)) {
         println("Welcome Admin")
+        print("Logging in.")
+        Thread.sleep(500)
+        print(".")
+        Thread.sleep(500)
+        println(".")
+        Thread.sleep(750)
+        loggedIn = true
         logLogin(customer)
-        adminStart()
+        adminStart(customer)
         // Else if customer inputs correct id and pin, redirect to customer's start page
       } else if ((customer.uID == id) && (customer.pin == pin)){
-        println("Successfully Logged in")
+        print("Logging in.")
+        Thread.sleep(500)
+        print(".")
+        Thread.sleep(500)
+        println(".")
+        Thread.sleep(750)
+        loggedIn = true
         logLogin(customer)
-        customer.start()
+        customer.start(customer)
       }
     }
-    println("Invalid ID and/or PIN")
-    start()
+    if (!loggedIn){
+      println("Invalid ID and/or PIN")
+    }
   }
 
   // Function to get all the customers
@@ -83,7 +99,7 @@ class Bank {
     for(customer <- customers){
       if(customer.id == input){
         customer.adminGetDetails()
-        adminStart()
+        adminStart(customer)
       }
     }
     println("Account Number Does Not Exist")
@@ -112,6 +128,7 @@ class Bank {
     }
   }
 
+  // Function to find customer/s by postcode
   def findCustomerPostcode() : Unit = {
     var counter : Int = 0
     val customerList = new ListBuffer[Customer]
@@ -131,6 +148,7 @@ class Bank {
     }
   }
 
+  // Starting page when launching the application
   def start(): Unit = {
     var choice: Int = 0
     while (choice != 10) {
@@ -138,17 +156,22 @@ class Bank {
         "1. Create an Account\n" +
         "2. Login\n" +
         "10. Exit")
-      choice = readInt
-      choice match {
-        case 1 => addCustomer()
-        case 2 => login()
-        case 10 => println("Thank you and have a nice day!"); System.exit(0)
-        case _ => println("Invalid Option")
+      try {
+        choice = readInt()
+        choice match {
+          case 1 => addCustomer()
+          case 2 => login()
+          case 10 => println("Thank you and have a nice day!"); System.exit(0)
+          case _ => println("Invalid Option")
+        }
+      } catch {
+        case ex: NumberFormatException => println("PLEASE INPUT A DIGIT")
       }
     }
   }
 
-  def adminStart() : Unit = {
+  // Admin login page
+  def adminStart(customer: Customer) : Unit = {
     var choice: Int = 0
     while (choice != 10) {
       println("Please Select From One of the Following Options:\n" +
@@ -163,23 +186,48 @@ class Bank {
         case 2 => findCustomer()
         case 3 => getLog()
         case 4 => clearLogs()
-        case 10 => println("Logging Out..."); start()
+        case 10 =>
+          print("Logging out.")
+          Thread.sleep(500)
+          print(".")
+          Thread.sleep(500)
+          println(".")
+          Thread.sleep(750)
+          logLogOut(customer)
+          start()
         case _ => println("Invalid Option")
       }
     }
   }
 
+  // Function to log when an account is created
+  def logCustomerCreation(customer: Customer): Unit = {
+    val date = new DateTime()
+    reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
+      .appendAll("" + date + " New Customer Account - ID: " + customer.id + " - Full Name: " + customer.getName() +
+      " - Postcode: " + customer.getPostCode() + "\n")
+  }
+
+  // Function to log everytime a user logs in, writing it in a log.txt file
   private def logLogin(customer: Customer): Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
       .appendAll("" + date + " Customer ID " + customer.id + " (" + customer.getName() + ") logged in\n")
   }
 
+  def logLogOut(customer: Customer) : Unit = {
+    val date = new DateTime()
+    reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
+      .appendAll("" + date + " Customer ID: " + customer.id + " (" + customer.getName() + ") Logged out\n")
+  }
+
+  // Function to print out all contents on the log.txt file
   private def getLog() : Unit = {
     println(scala.io.Source.fromFile(
       "C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt").mkString)
   }
 
+  // Function to clear all contents on the log.txt file
   private def clearLogs() : Unit = {
     val pw = new PrintWriter(
       "C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt");
@@ -188,6 +236,7 @@ class Bank {
   }
 }
 
+// Main
 object BankMain extends App {
   var bank = new Bank
   println("-------------------------------")

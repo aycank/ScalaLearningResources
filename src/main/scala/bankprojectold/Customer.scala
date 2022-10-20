@@ -1,4 +1,4 @@
-package bankproject
+package bankprojectold
 
 import scala.collection.mutable.HashMap
 import scala.io.StdIn.readInt

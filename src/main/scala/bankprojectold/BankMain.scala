@@ -1,4 +1,4 @@
-package bankproject
+package bankprojectold
 
 import scala.io.StdIn.{readLine, readInt}
 

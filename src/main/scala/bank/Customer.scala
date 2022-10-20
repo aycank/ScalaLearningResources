@@ -3,7 +3,6 @@ package bank
 import scala.collection.mutable.ListBuffer
 import scala.io.StdIn.{readInt, readLine}
 import scala.util.Random
-import scala.util.control.Breaks._
 
 class Customer(number : Int, name : String, postcode : String) {
   var id : Int = number
@@ -31,10 +30,10 @@ class Customer(number : Int, name : String, postcode : String) {
         case 2 => updateDetails()
         case 3 => addAccount()
         case 4 => enterAccount()
-        case 5 => // deleteAccount()
+        case 5 => deleteAccount()
         case 6 => getAccounts()
-        case 7 => // support()
-        case 10 => choice = 10
+        case 7 => support()
+        case 10 => println("Logging out...")
       }
     }
   }
@@ -97,27 +96,38 @@ class Customer(number : Int, name : String, postcode : String) {
   }
 
   def enterAccount() : Unit = {
-    if(accounts.isEmpty) {
+    var enterAcc: Boolean = false
+    if (accounts.isEmpty) {
       println("No Accounts Created")
-    }else{
+    } else {
       println("Which Account Would You Like To Access: ")
-      for(account <- accounts){
-        print(account.getID() + ". ")
+      for (account <- accounts) {
+        print(account.getID + ". ")
         account.getSimpleDetails()
       }
       val choice = readInt()
-      for(account <- accounts){
-        if(account.id == choice){
+      for (account <- accounts) {
+        if (account.id == choice) {
+          enterAcc = true
           account.start()
         }
       }
-      println("Invalid Option")
-      start()
+      if (!enterAcc) {
+        println("Invalid Option")
+      }
     }
+  }
+
+  def deleteAccount() : Unit = {
+
   }
 
   def getAccounts() : Unit = {
     for(account <- accounts) account.getDetails()
+  }
+
+  def support() : Unit = {
+
   }
 
   def getName() : String = fullName

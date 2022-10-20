@@ -13,6 +13,7 @@ val mySQLDependency = "mysql" % "mysql-connector-java" % "8.0.30"
 val bruh1 = "org.scalikejdbc" %% "scalikejdbc"       % "4.0.0"
 val bruh2 = "com.h2database"  %  "h2"                % "1.4.200"
 val bruh3 = "ch.qos.logback"  %  "logback-classic"   % "1.2.3"
+val jodaTime = "joda-time" % "joda-time" % "2.12.0"
 
-libraryDependencies ++= Seq(utilControl,scalaLogging, alltests, mySQLDependency, bruh1, bruh2, bruh3)
+libraryDependencies ++= Seq(utilControl,scalaLogging, alltests, mySQLDependency, bruh1, bruh2, bruh3, jodaTime)
 

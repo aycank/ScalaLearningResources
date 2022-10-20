@@ -3,7 +3,7 @@ package bank
 import scala.io.StdIn.{readDouble, readInt}
 import scala.util.Random
 
-abstract class Account {
+abstract class Account{
   val id : Int
   val accNum : Int
   val accType : String
@@ -20,11 +20,12 @@ abstract class Account {
         "10. Exit")
       choice = readInt()
       choice match{
-        case 1 => //depositCash()
-        case 2 => //withdrawCash()
-        case 3 => //checkBalance()
-        case 4 => //checkDetails()
-        case 10 => start()
+        case 1 => depositCash()
+        case 2 => withdrawCash()
+        case 3 => getBalance()
+        case 4 => getDetails()
+        case 10 => println("Exiting...")
+        case _ => println("Invalid Option")
       }
     }
   }
@@ -41,7 +42,7 @@ abstract class Account {
     println("Account: " + accType + "\tBalance: " + balance)
   }
 
-  def getID() : Int = id
+  def getID: Int = id
 
   def getBalance() : Unit = println("Balance: " + balance)
 
@@ -51,19 +52,32 @@ abstract class Account {
     if(deposit <= 0) {
         println("Invalid Amount")
       } else {
-      println(deposit + " Deposited.")
+      println(Thread.currentThread().getName + " Is Going To Deposit £" + deposit + ". Please Wait...")
+      try{
+        Thread.sleep(3000)
+      } catch {
+        case ex: InterruptedException => println("Interrupted Exception")
+      }
       balance += deposit
+      println(deposit + " Deposited by " + Thread.currentThread().getName + ".\nThe New Balance is: " + balance)
     }
   }
 
   def withdrawCash() : Unit = {
-    println("Enter how much to Withdraw: ")
+    println("Enter How Much To Withdraw: ")
     val withdraw = readDouble()
-    if(withdraw <= 0){
+    if((withdraw <= 0) && (balance - withdraw > 0)){
       println("Invalid Amount")
     } else {
+      println(Thread.currentThread().getName + " Is Going To Withdraw £" + withdraw + ". Please Wait...")
+      try{
+        Thread.sleep(3000)
+      } catch{
+        case ex: InterruptedException => println("Interrupted Exception")
+      }
       balance -= withdraw
-      println(withdraw + " Withdrawn")
+      println(withdraw + " Withdrawn.\nThe Remaining Balance is: " + balance + "" +
+        "\nThe amount was taken by " + Thread.currentThread().getName)
     }
   }
 

@@ -123,7 +123,7 @@ class Bank {
     if (customerList.isEmpty) {
       println("Name Does Not Exist")
     } else {
-      println(counter + " Found:\n")
+      println(counter + " Found:")
       customerList.foreach(_.adminGetDetails())
     }
   }
@@ -143,7 +143,7 @@ class Bank {
     if (customerList.isEmpty) {
       println("Postcode does not exist")
     } else {
-      println(counter + " Found:\n")
+      println(counter + " Found: ")
       customerList.foreach(_.adminGetDetails())
     }
   }
@@ -215,6 +215,7 @@ class Bank {
       .appendAll("" + date + " Customer ID " + customer.id + " (" + customer.getName() + ") logged in\n")
   }
 
+  // Function to log logging out of account
   def logLogOut(customer: Customer) : Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")

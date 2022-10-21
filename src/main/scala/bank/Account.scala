@@ -12,6 +12,7 @@ abstract class Account{
   private var balance : Double = 0
   private val sortCode : Int = Random.between(100000, 999999)
 
+  // Account Page Starting Hub
   def start(customer: Customer) : Unit = {
     var choice : Int = 0
     while(choice != 10){
@@ -24,7 +25,7 @@ abstract class Account{
       choice match{
         case 1 => depositCash(customer)
         case 2 => withdrawCash(customer)
-        case 3 => println(getBalance())
+        case 3 => println("Balance: " + getBalance())
         case 4 => getDetails()
         case 10 => println("Exiting...")
         case _ => println("Invalid Option")
@@ -32,36 +33,45 @@ abstract class Account{
     }
   }
 
+  // Function to get Details for specific account type
   def getDetails() : Unit = {
     println("---------------------------")
     println("Account Type: " + accType)
-    println("Balance: " + balance)
+    println(f"Balance: $balance%1.2f")
     println("Account Number: " + accNum)
     println("Sort Code: " + sortCode)
   }
 
+  // Function to get simple Details for specific account type
   def getSimpleDetails() : Unit = {
-    println("Account: " + accType + "\tBalance: " + balance)
+    println("Account: " + accType + f"\tBalance: $balance%1.2f")
   }
 
+  // Function to get ID
   def getID: Int = id
 
-  def getBalance() : Double = balance
+  // Function to get current balance
+  def getBalance() : Double = BigDecimal(balance).setScale(2, BigDecimal.RoundingMode.FLOOR).toDouble
 
+  // Function for depositing cash into account
   def depositCash(customer: Customer) : Unit = {
     println("Enter how much to deposit: ")
     val deposit = readDouble()
     if(deposit <= 0) {
       println("Invalid Amount")
     }else {
-      println(Thread.currentThread().getName + " Is Going To Deposit £" + deposit + ". Please Wait...")
+      print(Thread.currentThread().getName + f" Is Going To Deposit $deposit%1.2f" + ". Please Wait.")
       try{
-        Thread.sleep(3000)
+        Thread.sleep(1000)
+        print(".")
+        Thread.sleep(1000)
+        println(".")
+        Thread.sleep(1000)
       } catch {
         case ex: InterruptedException => println("Interrupted Exception")
       }
       balance += deposit
-      println(deposit + " Deposited by " + Thread.currentThread().getName + ".\nThe New Balance is: " + balance)
+      println(f"$deposit%1.2f Deposited by " + Thread.currentThread().getName + f".\nThe New Balance is: $balance%1.2f")
       if(deposit <= 5000){
         logDeposit(customer)
       } else {
@@ -70,20 +80,25 @@ abstract class Account{
     }
   }
 
+  // Function for withdrawing cash out of account
   def withdrawCash(customer: Customer) : Unit = {
     println("Enter How Much To Withdraw: ")
     val withdraw = readDouble()
     if((withdraw <= 0) && (balance - withdraw < 0)){
       println("Invalid Amount")
     } else {
-      println(Thread.currentThread().getName + " Is Going To Withdraw £" + withdraw + ". Please Wait...")
+      print(Thread.currentThread().getName + f" Is Going To Withdraw $withdraw%1.2f" + ". Please Wait.")
       try{
-        Thread.sleep(3000)
+        Thread.sleep(1000)
+        print(".")
+        Thread.sleep(1000)
+        println(".")
+        Thread.sleep(1000)
       } catch{
         case ex: InterruptedException => println("Interrupted Exception")
       }
       balance -= withdraw
-      println(withdraw + " Withdrawn.\nThe Remaining Balance is: " + balance + "" +
+      println(f"$withdraw%1.2f Withdrawn.\nThe Remaining Balance is: $balance%1.2f" +
         "\nThe amount was taken by " + Thread.currentThread().getName)
       if(withdraw <= 5000){
         logWithdrawal(customer)
@@ -97,6 +112,7 @@ abstract class Account{
 
   }
 
+  // Function to log deposit
   def logDeposit(customer: Customer) : Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
@@ -104,6 +120,7 @@ abstract class Account{
         "into Account: " + accType + "\n")
   }
 
+  // Function to log withdrawing cash
   def logWithdrawal(customer: Customer) : Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
@@ -111,6 +128,7 @@ abstract class Account{
         "from Account: " + accType + "\n")
   }
 
+  // Function to flag log if money deposited is over 5000
   def flagLogDeposit(customer: Customer) : Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
@@ -118,6 +136,7 @@ abstract class Account{
         " than 5000 from Account: " + accType + "\n")
   }
 
+  // Function to flag log if money withdrawn is over 5000
   def flagLogWithdraw(customer: Customer) : Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")

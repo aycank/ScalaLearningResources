@@ -14,6 +14,7 @@ class Customer(number : Int, name : String, postcode : String) {
   var pin: Int = Random.between(1000, 9999)
   var accounts = new ListBuffer[Account]
 
+  // Customer Start Page
   def start(customer: Customer) : Unit = {
     println("Hello " + fullName)
     var choice : Int = 0
@@ -29,7 +30,7 @@ class Customer(number : Int, name : String, postcode : String) {
       choice = scala.io.StdIn.readInt()
       choice match {
         case 1 => getDetails()
-        case 2 => updateDetails()
+        case 2 => updateDetails(customer)
         case 3 => addAccount(customer)
         case 4 => enterAccount(customer)
         case 5 => deleteAccount(customer)
@@ -60,7 +61,7 @@ class Customer(number : Int, name : String, postcode : String) {
     println("Acc" + id + ": FName-" + fullName + "  PCode-" + pCode + "  ID-" + uID + "  PIN-" + pin)
   }
 
-  def updateDetails() : Unit = {
+  def updateDetails(customer: Customer) : Unit = {
     var choice : Int = 0
     while(choice != 10){
       println("What Would You Like To Update:\n" +
@@ -69,13 +70,14 @@ class Customer(number : Int, name : String, postcode : String) {
         "10. Back")
       choice = scala.io.StdIn.readInt()
       choice match {
-        case 1 => setName()
-        case 2 => setPostcode()
+        case 1 => setName(customer)
+        case 2 => setPostcode(customer)
         case 10 => choice = 10
         case _ => println("Invalid Option")
       }
     }
   }
+
   def addAccount(customer: Customer) : Unit = {
     var choice : Int = 0
     while(choice != 10){
@@ -93,6 +95,7 @@ class Customer(number : Int, name : String, postcode : String) {
     }
   }
 
+  // Function to add a checking account
   def addChecking(customer: Customer) : Unit = {
     val id = accounts.size + 1
     val checkingAccount = new CheckingAccount(id)
@@ -101,6 +104,7 @@ class Customer(number : Int, name : String, postcode : String) {
     println("Credit Account Successfully Added")
   }
 
+  // Function to add a savings account
   def addSavings(customer: Customer) : Unit = {
     val id = accounts.size + 1
     val savingsAccount = new SavingsAccount(id)
@@ -109,6 +113,7 @@ class Customer(number : Int, name : String, postcode : String) {
     println("Savings Account Successfully Added")
   }
 
+  // Function to enter a specific account
   def enterAccount(customer: Customer) : Unit = {
     var enterAcc: Boolean = false
     if (accounts.isEmpty) {
@@ -132,6 +137,7 @@ class Customer(number : Int, name : String, postcode : String) {
     }
   }
 
+  // Function to delete an account
   def deleteAccount(customer: Customer) : Unit = {
     var checked: Boolean = false
     var willDel : Boolean = false
@@ -152,7 +158,6 @@ class Customer(number : Int, name : String, postcode : String) {
             checked = true
             println("Please Withdraw all cash before deleting the account")
           }else{
-            println(account.accType)
             if (account.accType == "Checking"){
               checked = true
               willDel = true
@@ -169,9 +174,23 @@ class Customer(number : Int, name : String, postcode : String) {
       }
       if(willDel){
         if(accountType == "Checking"){
+          print("Deleting.")
+          Thread.sleep(500)
+          print(".")
+          Thread.sleep(500)
+          println(".")
+          Thread.sleep(750)
+          println("Checkings Account Successfully Deleted")
           accounts -= accounts(index)
           logCreditDeletion(customer)
         }else if (accountType == "Savings"){
+          print("Deleting.")
+          Thread.sleep(500)
+          print(".")
+          Thread.sleep(500)
+          println(".")
+          Thread.sleep(750)
+          println("Savings Account Successfully Deleted")
           accounts -= accounts(index)
           logSavingsDeletion(customer)
         }
@@ -182,10 +201,12 @@ class Customer(number : Int, name : String, postcode : String) {
     }
   }
 
+  // Function to get all account details
   def getAccounts() : Unit = {
     for(account <- accounts) account.getDetails()
   }
 
+  // Function for contacting support team
   def support() : Unit = {
     print("Connecting you with an agent")
     Thread.sleep(4000)
@@ -199,20 +220,28 @@ class Customer(number : Int, name : String, postcode : String) {
       "to you as soon as possible.")
   }
 
+  // Function to get current full name
   def getName() : String = fullName
 
+  // Function to get current postcode
   def getPostCode() : String = pCode
 
-  private def setName() : Unit ={
-    println("Enter new First Name Followed by new Last Name (No Spaces):")
-    val newName = readLine()
-    fullName = newName
+  // Function to change name
+  private def setName(customer: Customer) : Unit ={
+    println("Enter new First Name: ")
+    val newFName = readLine().capitalize
+    println("Enter new Last Name: ")
+    val newLName = readLine().capitalize
+    fullName = newFName + " " + newLName
+    logChangeName(customer)
   }
 
-  private def setPostcode() : Unit = {
+  // Function to change postcode
+  private def setPostcode(customer: Customer) : Unit = {
     println("Enter new Postcode:")
     val newPostcode = readLine().toUpperCase()
     pCode = newPostcode
+    logChangePostCode(customer)
   }
 
   // Function to log when a credit account is created
@@ -238,6 +267,7 @@ class Customer(number : Int, name : String, postcode : String) {
         "Type: Savings\n")
   }
 
+  // Function to log when a savings account is deleted
   def logSavingsDeletion(customer: Customer): Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
@@ -245,10 +275,23 @@ class Customer(number : Int, name : String, postcode : String) {
         "Savings\n")
   }
 
+  // Function to log logging out
   def logLogOut(customer: Customer) : Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
       .appendAll("" + date + " Customer ID: " + customer.id + " (" + customer.getName() + ") Logged out\n")
+  }
+
+  def logChangeName(customer : Customer) : Unit = {
+    val date = new DateTime()
+    reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
+      .appendAll("" + date + " Customer ID: " + customer.id + " Changed Name to " + customer.getName() + "\n")
+  }
+
+  def logChangePostCode(customer: Customer) : Unit = {
+    val date = new DateTime()
+    reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
+      .appendAll("" + date + " Customer ID: " + customer.id + " Changed Postcode to " + customer.getPostCode() + "\n")
   }
 
   def this(id : Int, name : String, pcode : String, uid : Int, pin : Int){

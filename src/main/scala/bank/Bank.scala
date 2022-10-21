@@ -7,11 +7,19 @@ import org.joda.time.DateTime
 import java.io.PrintWriter
 
 class Bank {
+  // Create new ListBuffer that will store all customers of type Customer
   private val customers = new ListBuffer[Customer]
+
+  // Create an admin and add it to the customers ListBuffer
   var admin = new Customer(0, "admin", "admin", 123, 123)
   customers += admin
 
-  // Function for adding customer
+  /*
+  Function for adding a customer. The user enters their first and last name, followed by their postcode. A new
+  Instance of a customer is then created and added to the customers ListBuffer. The customer is given a unique ID
+  and PIN number that they will need to log in.
+  (Customer being created is added to the log)
+   */
   def addCustomer(): Unit = {
     val id = customers.size
     println("Enter your First Name: ")
@@ -21,10 +29,8 @@ class Bank {
     val fullName = fName + " " + lName
     println("Enter your current Address' Postcode: ")
     val pCode: String = readLine().toUpperCase()
-
     val customer = new Customer(id, fullName, pCode)
-    // Add customer to ListBuffer
-    customers += customer
+    customers += customer // Add customer to customers ListBuffer
     println("Account Created Successfully")
     logCustomerCreation(customer)
     customer.getDetails()
@@ -32,7 +38,12 @@ class Bank {
     println("-------------------------------")
   }
 
-  // Function to login
+  /*
+  Function to login. The user must enter their unique ID and PIN number given to them when creating an account.
+  If they input the two numbers correctly, it will redirect them to the customer's start page on the Customer class.
+  If the user inputs ID: 123 and PIN: 123, they will log in and be redirected to the admin start page, where they
+  have different admin options to choose from
+   */
   def login(): Unit = {
     var loggedIn: Boolean = false
     println("Enter your ID: ")
@@ -70,10 +81,15 @@ class Bank {
     }
   }
 
-  // Function to get all the customers
+  /*
+  Function to get all the customer details. Iterates through the customers ListBuffer and prints out all the details
+   */
   def getCustomers() : Unit = for(customer <- customers) customer.adminGetDetails()
 
-  // Function for finding a customer. User can choose to find them by ID, Full Name or Postcode
+  /*
+  Function to find a customer. The admin chooses whether to find a customer by their index number (in the customer
+  ListBuffer), full name, or postcode. Choosing one of the three options will call their respective function
+   */
   def findCustomer() : Unit = {
     var choice : Int = 0
     while (choice != 10) {
@@ -92,7 +108,10 @@ class Bank {
       }
     }
   }
-  // Function to find a customer/s by ID number (index)
+
+  /*
+  Function to find the customer with the index number from the customers ListBuffer
+   */
   def findCustomerID() : Unit = {
     println("Enter Account Number (Index): ")
     val input = readInt()
@@ -105,7 +124,9 @@ class Bank {
     println("Account Number Does Not Exist")
   }
 
-  // Function to find customer/s by first and last name
+  /*
+  Function to find the customer/s with the specific name given
+   */
   def findCustomerName() : Unit = {
     var counter : Int = 0
     val customerList = new ListBuffer[Customer]
@@ -128,7 +149,9 @@ class Bank {
     }
   }
 
-  // Function to find customer/s by postcode
+  /*
+  Function to find the customer/s with the specific postcode
+   */
   def findCustomerPostcode() : Unit = {
     var counter : Int = 0
     val customerList = new ListBuffer[Customer]
@@ -148,7 +171,10 @@ class Bank {
     }
   }
 
-  // Starting page when launching the application
+  /*
+  When the application is loaded, the user is greeted to the start page where they have the option to create an
+  account, login or exit the program
+   */
   def start(): Unit = {
     var choice: Int = 0
     while (choice != 10) {
@@ -170,7 +196,11 @@ class Bank {
     }
   }
 
-  // Admin login page
+  /*
+  Admin page that gives the user access to certain admin privileges. These include showing all customers,
+  finding a specific customer (by index ID, full name or postcode), accessing the logs, and clearing the logs.
+  If they choose to log out, they will return back to the start page
+   */
   def adminStart(customer: Customer) : Unit = {
     var choice: Int = 0
     while (choice != 10) {
@@ -200,7 +230,9 @@ class Bank {
     }
   }
 
-  // Function to log when an account is created
+  /*
+  Function to log customer creation and write it in the log.txt file
+   */
   def logCustomerCreation(customer: Customer): Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
@@ -208,27 +240,35 @@ class Bank {
       " - Postcode: " + customer.getPostCode() + "\n")
   }
 
-  // Function to log everytime a user logs in, writing it in a log.txt file
+  /*
+  Function to log every time a user logs in to their account. This will be written in the log.txt file
+   */
   private def logLogin(customer: Customer): Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
       .appendAll("" + date + " Customer ID " + customer.id + " (" + customer.getName() + ") logged in\n")
   }
 
-  // Function to log logging out of account
+  /*
+  Function to log everytime an admin logs out of the system. This writes to a log.txt file
+   */
   def logLogOut(customer: Customer) : Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
       .appendAll("" + date + " Customer ID: " + customer.id + " (" + customer.getName() + ") Logged out\n")
   }
 
-  // Function to print out all contents on the log.txt file
+  /*
+  Function to retrieve the log and print it to the admin. This will write it to the log.txt file
+   */
   private def getLog() : Unit = {
     println(scala.io.Source.fromFile(
       "C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt").mkString)
   }
 
-  // Function to clear all contents on the log.txt file
+  /*
+  Function to clear the logs and remove all data on it. This will clear the log.txt file
+   */
   private def clearLogs() : Unit = {
     val pw = new PrintWriter(
       "C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt");
@@ -237,7 +277,9 @@ class Bank {
   }
 }
 
-// Main
+/*
+Main function that runs the Application
+ */
 object BankMain extends App {
   var bank = new Bank
   println("-------------------------------")

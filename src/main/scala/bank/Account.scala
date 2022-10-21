@@ -12,7 +12,12 @@ abstract class Account{
   private var balance : Double = 0
   private val sortCode : Int = Random.between(100000, 999999)
 
-  // Account Page Starting Hub
+  /*
+  If the user enters a specific account, they will be directed to this account start page. Here they can select
+  between multiple options: Depositing money in to the account, withdrawing money out of the account, checking
+  account balance, checking account details, and exiting back to the customer start page. Whatever they choose will
+  call the respective function
+   */
   def start(customer: Customer) : Unit = {
     var choice : Int = 0
     while(choice != 10){
@@ -33,7 +38,10 @@ abstract class Account{
     }
   }
 
-  // Function to get Details for specific account type
+  /*
+  Function to get the details of the account. It will print the account type (Checkings or Savings), Balance
+  (2 decimal places)Account Number and Sort Code
+   */
   def getDetails() : Unit = {
     println("---------------------------")
     println("Account Type: " + accType)
@@ -42,18 +50,29 @@ abstract class Account{
     println("Sort Code: " + sortCode)
   }
 
-  // Function to get simple Details for specific account type
+  /*
+  Function to get simple details of the account, printing just the account type and balance (2 decimal places)
+   */
   def getSimpleDetails() : Unit = {
     println("Account: " + accType + f"\tBalance: $balance%1.2f")
   }
 
-  // Function to get ID
+  /*
+  Function to get the id of the account
+   */
   def getID: Int = id
 
-  // Function to get current balance
+  /*
+  Function to get the current balance of the account (to 2 decimal places)
+   */
   def getBalance() : Double = BigDecimal(balance).setScale(2, BigDecimal.RoundingMode.FLOOR).toDouble
 
-  // Function for depositing cash into account
+  /*
+  Function for depositing cash into the account. The user enters how much money they would like to deposit, as long
+  as the value given is not less than or equal to 0. If the deposit is greater than 5000, then it will be flagged
+  and logged in the log.txt. Otherwise it logs it normally and does not flag it. The deposit will be added to the
+  total balance
+   */
   def depositCash(customer: Customer) : Unit = {
     println("Enter how much to deposit: ")
     val deposit = readDouble()
@@ -62,13 +81,13 @@ abstract class Account{
     }else {
       print(Thread.currentThread().getName + f" Is Going To Deposit $deposit%1.2f" + ". Please Wait.")
       try{
-        Thread.sleep(1000)
+        Thread.sleep(1000) // 'Animation' to simulate the loading process of depositing money
         print(".")
         Thread.sleep(1000)
         println(".")
         Thread.sleep(1000)
       } catch {
-        case ex: InterruptedException => println("Interrupted Exception")
+        case ex: InterruptedException => println("Interrupted Exception") // Handling exceptions
       }
       balance += deposit
       println(f"$deposit%1.2f Deposited by " + Thread.currentThread().getName + f".\nThe New Balance is: $balance%1.2f")
@@ -80,7 +99,12 @@ abstract class Account{
     }
   }
 
-  // Function for withdrawing cash out of account
+  /*
+  Function for withdrawing money out of the account. The user enters how much money they would like to withdraw, as long
+  as the value given is not less than or equal to 0 AND after withdrawing, the balance isn't a negative value.
+  If the withdraw is greater than 5000, then it will be flagged and logged in the log.txt. Otherwise it logs it
+  normally and does not flag it. The withdraw will be deducted from the total balance
+   */
   def withdrawCash(customer: Customer) : Unit = {
     println("Enter How Much To Withdraw: ")
     val withdraw = readDouble()
@@ -89,7 +113,7 @@ abstract class Account{
     } else {
       print(Thread.currentThread().getName + f" Is Going To Withdraw $withdraw%1.2f" + ". Please Wait.")
       try{
-        Thread.sleep(1000)
+        Thread.sleep(1000) // 'Animation' to simulate the loading process of withdrawing money
         print(".")
         Thread.sleep(1000)
         println(".")
@@ -112,7 +136,9 @@ abstract class Account{
 
   }
 
-  // Function to log deposit
+  /*
+  Function to log everytime the customer deposits money into the account. This will be written in the log.txt file
+   */
   def logDeposit(customer: Customer) : Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
@@ -120,7 +146,9 @@ abstract class Account{
         "into Account: " + accType + "\n")
   }
 
-  // Function to log withdrawing cash
+  /*
+  Function to log every time the customer withdraws money out of the account. This will be written in the log.txt file
+   */
   def logWithdrawal(customer: Customer) : Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
@@ -128,7 +156,9 @@ abstract class Account{
         "from Account: " + accType + "\n")
   }
 
-  // Function to flag log if money deposited is over 5000
+  /*
+  Function to flag log if the customer has deposited more than 5000. This will be written in the log.txt file
+   */
   def flagLogDeposit(customer: Customer) : Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")
@@ -136,7 +166,9 @@ abstract class Account{
         " than 5000 from Account: " + accType + "\n")
   }
 
-  // Function to flag log if money withdrawn is over 5000
+  /*
+  Function to flag log if the customer has withdrawn more than 5000. This will be written in the log.txt file
+   */
   def flagLogWithdraw(customer: Customer) : Unit = {
     val date = new DateTime()
     reflect.io.File("C:\\Users\\Aycan\\IdeaProjects\\FirstSBTProject\\src\\main\\scala\\bank\\log.txt")

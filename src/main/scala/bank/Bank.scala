@@ -54,7 +54,7 @@ class Bank {
       // If admin, redirect to admin startpage
       if ((id == 123) && (pin == 123)) {
         println("Welcome Admin")
-        print("Logging in.")
+        print("Logging in.")  // 'Animation' to simulate the loading process of logging in
         Thread.sleep(500)
         print(".")
         Thread.sleep(500)
@@ -65,7 +65,7 @@ class Bank {
         adminStart(customer)
         // Else if customer inputs correct id and pin, redirect to customer's start page
       } else if ((customer.uID == id) && (customer.pin == pin)){
-        print("Logging in.")
+        print("Logging in.") // 'Animation' to simulate the loading process of logging in
         Thread.sleep(500)
         print(".")
         Thread.sleep(500)
@@ -110,13 +110,15 @@ class Bank {
   }
 
   /*
-  Function to find the customer with the index number from the customers ListBuffer
+  Function to find the customer with the index number from the customers ListBuffer. After the user inputs a number,
+  it iterates through the customers ListBuffer and checks. If it finds a match, it will print the details of that
+  specific customer.
    */
   def findCustomerID() : Unit = {
     println("Enter Account Number (Index): ")
     val input = readInt()
-    for(customer <- customers){
-      if(customer.id == input){
+    for(customer <- customers){ // Iterate through the customers Listbuffer
+      if(customer.id == input){  // If the index is the same, then print the details of that customer
         customer.adminGetDetails()
         adminStart(customer)
       }
@@ -125,7 +127,9 @@ class Bank {
   }
 
   /*
-  Function to find the customer/s with the specific name given
+  Function to find the customer/s with the specific name given. After the user inputs a name, it iterates through
+  the customers ListBuffer and checks. If it finds a match, it adds it to the customerList ListBuffer. After it has
+  checked, it will print out all the details of each customer.
    */
   def findCustomerName() : Unit = {
     var counter : Int = 0
@@ -150,7 +154,9 @@ class Bank {
   }
 
   /*
-  Function to find the customer/s with the specific postcode
+  Function to find the customer/s with the specific postcode. After the user inputs a postcode, it iterates through
+  the customers ListBuffer and checks. If it finds a match, it adds it to the customerList ListBuffer. After it has
+  checked, it will print out all the details of each customer.
    */
   def findCustomerPostcode() : Unit = {
     var counter : Int = 0

@@ -7,7 +7,7 @@ In addition to the README you're reading right now, this repo includes other REA
 - [Access Modifiers](https://github.com/aycank/ScalaLearningResources/blob/main/src/main/scala/accessmodifiers)
 - [Activities (Exercises)](https://github.com/aycank/ScalaLearningResources/blob/main/src/main/scala/activities)
 - [Arrays](https://github.com/aycank/ScalaLearningResources/blob/main/src/main/scala/arrays)
-- [BANK PROJECT](https://github.com/aycank/ScalaLearningResources/blob/main/src/main/scala/bank)
+- [Bank Project](https://github.com/aycank/ScalaLearningResources/blob/main/src/main/scala/bank)
 - [Break Testing](https://github.com/aycank/ScalaLearningResources/blob/main/src/main/scala/breaktesting)
 - [Case Classes](https://github.com/aycank/ScalaLearningResources/blob/main/src/main/scala/caseclass)
 - [Collections](https://github.com/aycank/ScalaLearningResources/blob/main/src/main/scala/collections)

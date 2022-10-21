@@ -87,6 +87,11 @@ class Bank {
   def getCustomers() : Unit = for(customer <- customers) customer.adminGetDetails()
 
   /*
+  Function used for unit testing purposes
+   */
+  def getCustomerList() : ListBuffer[Customer] = customers
+
+  /*
   Function to find a customer. The admin chooses whether to find a customer by their index number (in the customer
   ListBuffer), full name, or postcode. Choosing one of the three options will call their respective function
    */

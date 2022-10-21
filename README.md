@@ -40,3 +40,5 @@ In addition to the README you're reading right now, this repo includes other REA
 - [Tuple](https://github.com/aycank/ScalaLearningResources/blob/main/src/main/scala/tuple)
 - [Variables](https://github.com/aycank/ScalaLearningResources/blob/main/src/main/scala/variables)
 
+- [Google](www.google.com)
+
